@@ -5,11 +5,11 @@ import React, { useState } from "react";
 export default function App() {
   const [details, setDetails] = useState([]);
 
-  const catchSaveDetails = (uName, uAge) => {
+  const catchSaveDetails = (uName, uAge, uCollage) => {
     setDetails((pervUserDetails) => {
       return [
         ...pervUserDetails,
-        { name: uName, age: uAge, id: Math.random().toString() },
+        { name: uName, age: uAge, collage:uCollage, id: Math.random().toString() },
       ];
     });
   };

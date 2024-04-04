@@ -10,15 +10,22 @@ const AddUser = (props) => {
   const [error, setError] = useState();
   const nameInputRef = useRef();
   const ageInputRef = useRef();
+  const clgInputRef = useRef();
 
   const addUserHandler = (event) => {
     event.preventDefault();
     const enteredUsername = nameInputRef.current.value;
     const enteredAge = ageInputRef.current.value;
-    if (enteredUsername.trim().length === 0 || enteredAge.trim().length === 0) {
+    const enteredClgName = clgInputRef.current.value;
+    if (
+      enteredUsername.trim().length === 0 ||
+      enteredAge.trim().length === 0 ||
+      enteredClgName.trim().length === 0
+    ) {
       setError({
         title: "Invalid input",
-        message: "Please enter A valid name and age(non-empty values).",
+        message:
+          "Please enter A valid name and age and Collage name(non-empty values).",
       });
       return;
     }
@@ -29,9 +36,10 @@ const AddUser = (props) => {
       });
       return;
     }
-    props.onSaveDetails(enteredUsername, enteredAge);
-    nameInputRef.current.value = '';
-    ageInputRef.current.value = '' ;
+    props.onSaveDetails(enteredUsername, enteredAge, enteredClgName);
+    nameInputRef.current.value = "";
+    ageInputRef.current.value = "";
+    clgInputRef.current.value = "";
   };
 
   const errorHandler = () => {
@@ -53,6 +61,8 @@ const AddUser = (props) => {
           <input id="username" type="text" ref={nameInputRef} />
           <label htmlFor="age">Age (Years)</label>
           <input id="age" type="number" ref={ageInputRef} />
+          <label htmlFor="clgname">Collage Name</label>
+          <input id="clgname" type="text" ref={clgInputRef} />
           <Button type="submit">Add User</Button>
         </form>
       </Card>

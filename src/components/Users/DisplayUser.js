@@ -8,7 +8,7 @@ export default function DisplayUser(props) {
         {props.users.map((user, index) => {
           return (
             <li key={user.id}>
-              {user.name} ({user.age} Years Old)
+              {user.name} ({user.age} Years Old){user.collage}
             </li>
           );
         })}
